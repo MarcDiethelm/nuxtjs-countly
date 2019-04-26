@@ -1,0 +1,14 @@
+{
+  "name": "nuxtjs-countly",
+  "version": "0.2.6",
+  "description": "Nuxt plugin providing Countly web SDK tracker",
+  "main": "lib/module.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
