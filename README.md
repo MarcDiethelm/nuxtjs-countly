@@ -12,10 +12,10 @@ npm install --save @marcdiethelm/nuxtjs-countly
 
 In `nuxt.config.js`
 
-add the line to the `modules` array:
+add this line to the `modules` array:
 
 ```js
-'nuxt-countly'
+'@marcdiethelm/nuxt-countly'
 ```
 
 and add this configuration data somewhere below:
