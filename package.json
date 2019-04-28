@@ -1,6 +1,6 @@
 {
   "name": "@marcdiethelm/nuxtjs-countly",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Nuxt plugin providing Countly web SDK tracker",
   "main": "lib/module.js",
   "directories": {
@@ -13,7 +13,7 @@
     "lib/*"
   ],
   "author": "Marc Diethelm",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/MarcDiethelm/nuxtjs-countly",
   "bugs": "https://github.com/MarcDiethelm/nuxtjs-countly/issues",
   "repository": {
@@ -25,6 +25,7 @@
     "nuxtjs",
     "countly",
     "analytics",
+    "web analytics",
     "tracker",
     "tracking"
   ]
