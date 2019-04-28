@@ -108,3 +108,9 @@ this.track('log_error', {
 	detail: err.message
 })
 ```
+
+## Troubleshooting
+
+- CORS errors in Firefox despite correct HTTP headers:
+  
+  Are you running an ad blocker? Blocked connection by an identified tracker script will show as a CORS error in Firefox.
