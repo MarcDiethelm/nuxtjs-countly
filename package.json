@@ -1,6 +1,6 @@
 {
   "name": "@marcdiethelm/nuxtjs-countly",
-  "version": "0.5.0-beta.0",
+  "version": "0.5.0",
   "description": "Nuxt plugin providing Countly web SDK tracker",
   "main": "lib/module.js",
   "directories": {
