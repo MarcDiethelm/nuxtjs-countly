@@ -1,8 +1,11 @@
-# nuxtjs-countly
+# @marcdiethelm/nuxtjs-countly
 
-A Nuxt.js plugin providing Countly's web analytics / SDK tracker. [Github](https://github.com/Countly/countly-sdk-web), [API](http://countly.github.io/countly-sdk-web), [docs](https://resources.count.ly/docs/countly-sdk-for-web)
+A Nuxt.js plugin providing Countly's web SDK / analytics / tracker. [Github](https://github.com/Countly/countly-sdk-web), [API](http://countly.github.io/countly-sdk-web), [docs](https://resources.count.ly/docs/countly-sdk-for-web)
 
-Based on [nuxtjs-countly by gweill](https://www.npmjs.com/package/nuxtjs-countly), a published npm module without public source code. If you are the original author please contact me.
+The plugin lazy loads the Countly tracker by adding a script element as last child in html `body` with `async=true`. It then checks for script load every 500ms for 30s, until the script is loaded or it times out. After successful script load Countly is injected into Vue components and Nuxt context as `$countly`.
+
+> Based on [nuxtjs-countly by gweill](https://www.npmjs.com/package/nuxtjs-countly), a published npm module without public source code. If you are the original author please contact me.
+
 
 ## Installation
 
@@ -63,6 +66,7 @@ countly: {
 ```
 Comments in this example are omitted for brevity.
 
+
 ## Programmatic usage
 
 Countly is available as `this.$countly` in Vue.js components and also in `context` provided by Nuxt.js. It is typically used as 
@@ -73,41 +77,59 @@ Consult the Countly web SDK [API documentation](http://countly.github.io/countly
 
 #### Example
 
+Availability of `$countly` in Vue components.  
+Note the function `this.onCountlyLoad` which accepts callbacks.
+
 ```js
-	// To use before Vue is ready.
 	asyncData: function(context) {
-		let countly = context.$countly
-		...
+		let countly = context.app.$countly
 	},
 	
-	methods: {
-		/**
-		 * @param {string} action - Countly tracker 'helper method'.
- 		 * @param {object} data - Analytics data.
-		 */
-		track: function(action, data) {
-			if (typeof action !== 'string') return console.error(`action is not string, type: ${typeof action}`)
-			if (action === 'add_event' && typeof data.key !== 'string')
-				return console.error(`data.key is not string, type: ${typeof action}`)
-
-			this.$countly.q.push([action, data])
+	created: function() {
+		// only in browser
+		if (this.$countly) {
+			this.$countly.q.push([
+				'add_event',
+				{
+					key: 'page-created'
+				}
+			])
 		}
+	},
+
+	mounted: function() {
+		this.$countly.q.push([
+			'add_event',
+			{
+				key: 'page-mounted'
+			}
+		])
+
+		this.onCountlyLoad(() => {
+			this.$countly.q.push([
+				'add_event',
+				{
+					key: 'countly-loaded'
+				}
+			])
+		})
 	}
 ```
 
-Use it:
+This plugin provides a `$track` helper method, which performs some input checking and pushes to the queue:
 
 ```js
-this.track('add_event', {
+this.$track('add_event', {
 	key: 'email-signup-success',
 	segmentation: { email: this.email }
 })
 
-this.track('log_error', { 
+this.$track('log_error', { 
 	email: this.email,
 	detail: err.message
 })
 ```
+
 
 ## Troubleshooting
 
