@@ -7,7 +7,7 @@ The plugin lazy loads the Countly tracker by adding a script element as last chi
 > Based on [nuxtjs-countly by gweill](https://www.npmjs.com/package/nuxtjs-countly), a published npm module without public source code. If you are the original author please contact me.
 
 
-## Installation
+## Installation and Config
 
 ```bash
 npm install --save @marcdiethelm/nuxtjs-countly
@@ -21,7 +21,7 @@ In `nuxt.config.js`...
 '@marcdiethelm/nuxtjs-countly'
 ```
 
-- and add this configuration data somewhere below:
+- and add this **configuration** data somewhere below:
 
 ```js
 /*
@@ -40,6 +40,9 @@ countly: {
 	
 	// Automatic tracking, if not array defaults to ['track_sessions', 'track_pageview', 'track_links']
 	trackers: null,
+	
+	// Append a <noscript> tag with tracking pixel <img> to <body>, default: true
+	noScript: true,
 	
 	// Log Countly debug info to console, default: false
 	debug: process.env.NODE_ENV !== 'production'
