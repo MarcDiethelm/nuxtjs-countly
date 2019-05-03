@@ -18,7 +18,7 @@ In `nuxt.config.js`
 add this line to the `modules` array:
 
 ```js
-'@marcdiethelm/nuxt-countly'
+'@marcdiethelm/nuxtjs-countly'
 ```
 
 and add this configuration data somewhere below:
