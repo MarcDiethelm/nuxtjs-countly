@@ -38,7 +38,7 @@ countly: {
 	// Default: https://cdn.jsdelivr.net/npm/countly-sdk-web@latest/lib/countly.min.js
 	trackerSrc: process.env.MYAPP_COUNTLY_TRACKER_SRC || 'http://mycountly.lan/sdk/web/countly.min.js',
 	
-	// Automatic tracking, if not array defaults to ['track_sessions', 'track_pageview', 'track_links']
+	// Automatic tracking, if not array this defaults to ['track_sessions', 'track_pageview', 'track_links']
 	trackers: null,
 	
 	// Append a <noscript> tag with tracking pixel <img> to <body>, default: true
